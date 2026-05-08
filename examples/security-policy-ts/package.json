@@ -5,7 +5,7 @@
 	},
 	"dependencies": {
 		"typescript": "^4.0.0",
-		"@pulumi/pulumi": "3.223.0",
+		"@pulumi/pulumi": "3.237.0",
 		"@pulumi/gcp": "9.23.0"
 	}
 }
